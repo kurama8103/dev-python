@@ -13,7 +13,9 @@ def quantstats_html(filepath_csv, bm=None):
         pass
     else:
         df = df.pct_change().dropna()
-    filename_html = 'quantstats_'+df.name+'.html'
+    filename_html = df.name+'-' + \
+        df.index[0].strftime('%Y%m%d')+'-' + \
+        df.index[-1].strftime('%Y%m%d')+'.html'
     qs.reports.html(df, bm=bm, rf=0., title=df.name,
                     download_filename=filename_html, output='.')
     return filename_html
