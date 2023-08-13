@@ -42,3 +42,4 @@ if __name__ == '__main__':
     else:
         arg1 = sys.argv[1]
     main(arg1)
+    subprocess.call(['open', 'filename'])
