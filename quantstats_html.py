@@ -10,7 +10,7 @@ from tqdm.auto import tqdm
 warnings.filterwarnings("ignore", category=FutureWarning)
 
 
-def quantstats_html(filepath_csv: str, open_html: bool = True) -> None:
+def quantstats_html(filepath_csv: str, open_html: bool = True, no_benchmark: bool = True) -> None:
     """
     first column is used benchmark. 
     """
@@ -24,7 +24,7 @@ def quantstats_html(filepath_csv: str, open_html: bool = True) -> None:
 
     for c in tqdm(df.columns):
         x = df[c]
-        if df.iloc[:, 0].name == c:
+        if (df.iloc[:, 0].name == c) or no_benchmark:
             bm = None
         else:
             bm = df.iloc[:, 0]
