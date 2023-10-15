@@ -17,13 +17,12 @@ sns.set_style('whitegrid')
 
 
 def min_LGBM(X, y, seed=42):
-    X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=seed)
     # X_train,X_test=feat(X_train),feat(X_test)
     param = {
         'objective': 'regression',
         'metric': 'rmse',
         'num_boost_round': 100,
-
         'num_leaves': None,
         'max_depth': 3,
         'learning_rate': 0.5,
@@ -37,7 +36,7 @@ def min_LGBM(X, y, seed=42):
         # 'class_weight':'balanced',
     }
 
-    kf = KFold(n_splits=2, shuffle=True, random_state=0)
+    kf = KFold(n_splits=2, shuffle=True, random_state=seed)
     ms = []
     vs = []
     for i, (ind_train, ind_test) in tqdm(enumerate(kf.split(y_train))):
