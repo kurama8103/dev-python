@@ -104,7 +104,7 @@ if __name__ == '__main__':
             target_col=sys.argv[2]
         except IndexError:
             target_col=None
-# %%
+
 df=pd.read_csv(filepath,
 # index_col=0,
 parse_dates=True).select_dtypes(exclude='object')
